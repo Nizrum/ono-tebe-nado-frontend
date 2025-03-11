@@ -1,8 +1,8 @@
-import { Form } from "./Form";
+import { FormView } from "./FormView";
 import { IOrderForm } from "../../types";
 import { IEvents } from "../base/events";
 
-export class OrderView extends Form<IOrderForm> {
+export class OrderView extends FormView<IOrderForm> {
 	constructor(container: HTMLFormElement, events: IEvents) {
 		super(container, events);
 	}
