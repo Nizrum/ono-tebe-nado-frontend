@@ -24,7 +24,7 @@ export class AppState extends Model<IAppState> {
 		}
 	}
 
-	clearBasket() {
+	clearCart() {
 		this.order.items.forEach((id) => {
 			this.toggleOrderedLot(id, false);
 			this.catalog.find((it) => it.id === id).clearBid();
