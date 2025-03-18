@@ -5,7 +5,7 @@ interface ISuccessfulOrder {
 	total: number;
 }
 
-export class SuccessfulOrder extends Component<ISuccessfulOrder> {
+export class SuccessfulOrderView extends Component<ISuccessfulOrder> {
 	protected _close: HTMLElement;
 
 	constructor(container: HTMLElement, onClick: () => void) {

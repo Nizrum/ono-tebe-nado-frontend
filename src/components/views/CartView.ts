@@ -1,9 +1,5 @@
 import { Component } from "../base/Component";
-import {
-	createElement,
-	ensureElement,
-	formatNumber,
-} from "../../utils/utils";
+import { createElement, ensureElement, formatNumber } from "../../utils/utils";
 import { EventEmitter } from "../base/events";
 
 interface ICartView {
@@ -12,7 +8,7 @@ interface ICartView {
 	selected: string[];
 }
 
-export class Cart extends Component<ICartView> {
+export class CartView extends Component<ICartView> {
 	protected _list: HTMLElement;
 	protected _total: HTMLElement;
 	protected _button: HTMLElement;
