@@ -12,16 +12,14 @@ export class CartView extends Component<ICartView> {
 	protected _list: HTMLElement;
 	protected _total: HTMLElement;
 	protected _button: HTMLElement;
+	protected _actionsBar: HTMLElement;
 
 	constructor(container: HTMLElement, protected events: EventEmitter) {
 		super(container);
 
-		this._list = ensureElement<HTMLElement>(
-			".basket__list",
-			this.container
-		);
-		this._total = this.container.querySelector(".basket__total");
-		this._button = this.container.querySelector(".basket__action");
+		this._list = ensureElement<HTMLElement>(".cart__list", this.container);
+		this._total = this.container.querySelector(".cart__total");
+		this._button = this.container.querySelector(".cart__action");
 
 		if (this._button) {
 			this._button.addEventListener("click", () => {
@@ -35,12 +33,14 @@ export class CartView extends Component<ICartView> {
 	set items(items: HTMLElement[]) {
 		if (items.length) {
 			this._list.replaceChildren(...items);
+			super.setDisabled(this._button, false);
 		} else {
 			this._list.replaceChildren(
 				createElement<HTMLParagraphElement>("p", {
 					textContent: "Корзина пуста",
 				})
 			);
+			super.setDisabled(this._button, true);
 		}
 	}
 

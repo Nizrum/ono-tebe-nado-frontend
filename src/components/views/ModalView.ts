@@ -9,6 +9,7 @@ interface IModalData {
 export class ModalView extends Component<IModalData> {
 	protected _closeButton: HTMLButtonElement;
 	protected _content: HTMLElement;
+    protected _wrapper: HTMLElement;
 
 	constructor(container: HTMLElement, protected events: IEvents) {
 		super(container);
@@ -21,10 +22,14 @@ export class ModalView extends Component<IModalData> {
 			".modal__content",
 			container
 		);
+		this._wrapper = ensureElement<HTMLElement>(
+			".modal__container",
+			container
+		);
 
 		this._closeButton.addEventListener("click", this.close.bind(this));
 		this.container.addEventListener("click", this.close.bind(this));
-		this._content.addEventListener("click", (event) =>
+		this._wrapper.addEventListener("click", (event) =>
 			event.stopPropagation()
 		);
 	}
