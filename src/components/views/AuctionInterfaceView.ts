@@ -10,7 +10,7 @@ export type AuctionStatus = {
 	history: number[];
 };
 
-export class AuctionView extends Component<AuctionStatus> {
+export class AuctionInterfaceView extends Component<AuctionStatus> {
 	protected _time: HTMLElement;
 	protected _label: HTMLElement;
 	protected _button: HTMLButtonElement;
@@ -61,6 +61,7 @@ export class AuctionView extends Component<AuctionStatus> {
 		this._input.value = String(value);
 	}
 	set history(value: number[]) {
+        console.log(value);
 		this._bids.replaceChildren(
 			...value.map((item) =>
 				createElement<HTMLUListElement>("li", {

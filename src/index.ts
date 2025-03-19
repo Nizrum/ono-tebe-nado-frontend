@@ -7,7 +7,7 @@ import { CatalogChangeEvent, Lot } from "./components/models/LotModel";
 import { AppState } from "./components/models/AppModel";
 import { PageView } from "./components/views/PageView";
 import { BidItemView } from "./components/views/BidItemView";
-import { AuctionView } from "./components/views/AuctionView";
+import { AuctionInterfaceView } from "./components/views/AuctionInterfaceView";
 import { AuctionItemView } from "./components/views/AuctionItemView";
 import { CatalogItemView } from "./components/views/CatalogItemView";
 import { cloneTemplate, createElement, ensureElement } from "./utils/utils";
@@ -192,7 +192,7 @@ events.on("card:select", (item: Lot) => {
 events.on("preview:changed", (item: Lot) => {
 	const showItem = (item: Lot) => {
 		const card = new AuctionItemView(cloneTemplate(cardPreviewTemplate));
-		const auction = new AuctionView(
+		const auction = new AuctionInterfaceView(
 			cloneTemplate(auctionTemplate),
 			(price) => {
 				item.placeBid(price);
@@ -230,7 +230,9 @@ events.on("preview:changed", (item: Lot) => {
 		api.getLotItem(item.id)
 			.then((result) => {
 				item.description = result.description;
-				item.history = result.history;
+				if (!item.history) {
+                    item.history = result.history;
+                }
 				showItem(item);
 			})
 			.catch((err) => {
