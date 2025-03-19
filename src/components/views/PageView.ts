@@ -12,17 +12,17 @@ export class PageView extends Component<IPage> {
 	protected _counter: HTMLElement;
 	protected _catalog: HTMLElement;
 	protected _wrapper: HTMLElement;
-	protected _basket: HTMLElement;
+	protected _cart: HTMLElement;
 
 	constructor(container: HTMLElement, protected events: IEvents) {
 		super(container);
 
-		this._counter = ensureElement<HTMLElement>(".header__basket-counter");
+		this._counter = ensureElement<HTMLElement>(".header__cart-counter");
 		this._catalog = ensureElement<HTMLElement>(".catalog__items");
 		this._wrapper = ensureElement<HTMLElement>(".page__wrapper");
-		this._basket = ensureElement<HTMLElement>(".header__basket");
+		this._cart = ensureElement<HTMLElement>(".header__cart");
 
-		this._basket.addEventListener("click", () => {
+		this._cart.addEventListener("click", () => {
 			this.events.emit("bids:open");
 		});
 	}

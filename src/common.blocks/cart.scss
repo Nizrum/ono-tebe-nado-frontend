@@ -1,17 +1,13 @@
 @use "variables" as *;
 @use "mixins";
 
-.basket {
+.cart {
   @include mixins.flex(column);
   gap: 2rem;
 
   &__list {
     @include mixins.flex(column);
     gap: 2rem;
-  }
-
-  &__item {
-
   }
 
   &__actions {
@@ -21,6 +17,10 @@
     border-top: 1px solid #232427;
     padding-top: 2rem;
     gap: 2rem;
+
+    &_hidden {
+        display: none;
+    }
   }
 
   &__total {
